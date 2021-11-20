@@ -13,9 +13,13 @@ interface IHapiFormCore {
 
   handleSubmission();
 
+  resetInputs();
+
   showError(errors: object);
 
   removeError();
+
+  redirectToThankYouPage();
 
 }
 
@@ -50,7 +54,7 @@ class Core implements IHapiFormCore {
   thankPageUrl: string;
 
 
-  _formElement: HTMLElement;
+  _formElement: HTMLFormElement;
 
 
   /**
@@ -58,7 +62,7 @@ class Core implements IHapiFormCore {
    * @param params - IHapiParam
    */
   constructor(params: IHapiParam) {
-    this.thankPageUrl = params.redirectUrl || '/thank-you/';
+    this.thankPageUrl = params.redirectUrl || '/thank-you.html';
     this._formElement = document.querySelector(params.formSelector || '#hapi-form');
     this.i18nLocale = params.i18nLocale;
 
@@ -86,17 +90,21 @@ class Core implements IHapiFormCore {
     return url.href;
   }
 
+  resetInputs() {
+    this._formElement.reset();
+  }
 
   disableSubmitButtons() {
     // disable submit button
-    this._formElement.querySelectorAll('button[type=submit],input[type=submit]').forEach(submitBtn => {
+    this._formElement.querySelectorAll('[type=submit]').forEach((submitBtn: HTMLElement) => {
       submitBtn.setAttribute('disabled', String(true));
+      // submitBtn.innerText = 'please wait...';
     });
   }
 
   enableSubmitButtons() {
     // disable submit button
-    this._formElement.querySelectorAll('button[type=submit],input[type=submit]').forEach(submitBtn => {
+    this._formElement.querySelectorAll('[type=submit]').forEach(submitBtn => {
       submitBtn.removeAttribute('disabled');
     });
   }
@@ -134,10 +142,16 @@ class Core implements IHapiFormCore {
       }).then((res) => {
         const statusCode = res.status;
 
-        if (statusCode === 200) {
+        if (statusCode === 201) {
+          // statuscode 201, fulfilled and created.
+
+          //reset inputs. only when successful submission
+          // user can edit the inputs when unsuccessful submit
+          // no need to key in again
+          this.resetInputs();
 
           // redirect to thank you page
-          window.location.href = this.thankPageUrl;
+          this.redirectToThankYouPage();
 
         } else if (statusCode === 422) {
           // form validation errors
@@ -155,7 +169,7 @@ class Core implements IHapiFormCore {
         } else {
           // other errors
           // like 466, domain errors
-          console.error(res);
+          console.error('statusCode: ', statusCode, 'Response: ', res);
         }
 
         // enable submit button
@@ -196,7 +210,10 @@ class Core implements IHapiFormCore {
     });
   }
 
-
+  redirectToThankYouPage() {
+    // redirect to thank you page
+    window.location.href = this.thankPageUrl;
+  }
 }
 
 /**

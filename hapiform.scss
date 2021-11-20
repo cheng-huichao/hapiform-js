@@ -1,8 +1,16 @@
+
 .hapi-form {
 
-  width: 25%;
+  width: 100%;
+  max-width: 450px;
   display: block;
   background: cadetblue;
+  padding: 30px;
+
+  .form-title{
+    color:white;
+    margin-bottom: 1.5rem;
+  }
 
   /**
   * floating input style
@@ -53,7 +61,7 @@
 
     .hapi-form-input-error{
       color:red;
-      font-size: 10px;
+      font-size: 90%;
       padding: 0.2rem;
     }
   }
@@ -63,12 +71,26 @@
   */
   input[type=submit], button[type=submit] {
     width: 100%;
-    padding: .5rem .75rem;
+    padding: .7rem .75rem;
     background: transparent;
     color: white;
     cursor: pointer;
     border: 1px solid white;
     outline: none;
     border-radius: 3px;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover{
+      color: cadetblue;
+      background-color: white;
+    }
+
+    &:disabled{
+      pointer-events: none;
+      color: grey;
+      border: 1px solid grey;
+    }
   }
 }

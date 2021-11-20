@@ -2,41 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hapi Form - Contact Form</title>
   <link rel="stylesheet" href="hapiform.css">
+
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-<form id="hapi-form" class="hapi-form">
-  <div class="floating-input">
-    <input id="first_name" name="first_name" type="text" placeholder=" "/>
-    <label for="first_name">First Name</label>
-  </div>
+<div>
+  <form id="hapi-form" class="hapi-form">
+    <h2 class="form-title">Send us an enquiry</h2>
 
-  <div class="floating-input">
-    <input id="last_name" name="last_name" type="text" placeholder=" "/>
-    <label for="last_name">Last Name</label>
-  </div>
+    <div class="floating-input">
+      <input id="first_name" name="first_name" type="text" placeholder=" "/>
+      <label for="first_name">First Name</label>
+    </div>
 
-  <div class="floating-input">
-    <input id="contact" name="contact" type="tel" placeholder=" "/>
-    <label for="contact">Contact</label>
-  </div>
+    <div class="floating-input">
+      <input id="last_name" name="last_name" type="text" placeholder=" "/>
+      <label for="last_name">Last Name</label>
+    </div>
 
-  <div class="floating-input">
-    <input id="email" name="email" type="email" placeholder=" "/>
-    <label for="email">Email</label>
-  </div>
+    <div class="floating-input">
+      <input id="contact" name="contact" type="tel" placeholder=" "/>
+      <label for="contact">Contact</label>
+    </div>
 
-  <div class="floating-input">
-    <textarea rows="4" id="message" name="message" placeholder=" "></textarea>
-    <label for="message">Message</label>
-  </div>
+    <div class="floating-input">
+      <input id="email" name="email" type="email" placeholder=" "/>
+      <label for="email">Email</label>
+    </div>
 
-  <div class="">
-    <button type="submit">Submit</button>
-  </div>
-</form>
+    <div class="floating-input">
+      <textarea rows="4" id="message" name="message" placeholder=" "></textarea>
+      <label for="message">Message</label>
+    </div>
+
+    <div class="">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+</div>
+
+<!--Import the hapi form js library here - Begin -->
 
 <script src="./hapiform.js"></script>
 <script>
@@ -44,11 +58,13 @@
    * Parameters/config of HapiForm
    * @param hapiFormID - form id, like: '40552337-cfc0-4efe-8e09-e4bc28e9c874'
    * @param formSelector? - selector of Form Element. default: '#hapi-form'
-   * @param redirectUrl? - redirect to page, default: '/thank-you/'
+   * @param redirectUrl? - redirect to page, default: '/thank-you.html'
    * @param i18nLocale? - i18n locale code
    */
-  new HapiForm({hapiFormID: '40552337-cfc0-4efe-8e09-e4bc28e9c874'});
+  new HapiForm({hapiFormID: '40552337-cfc0-4efe-8e09-e4bc28e9c874', redirectUrl:'/thank-you.html'});
 </script>
+
+<!--Import the hapi form js library here - End -->
 
 </body>
 </html>
