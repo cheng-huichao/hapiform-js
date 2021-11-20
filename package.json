@@ -1,0 +1,24 @@
+{
+  "name": "hapiform.js",
+  "version": "1.0.0",
+  "description": "Vanilla javascript library of Hapi Form",
+  "main": "hapiform.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheng-huichao/hapiform-js.git"
+  },
+  "keywords": [
+    "hapiform",
+    "hapi form",
+    "activa media"
+  ],
+  "author": "Cheng Huichao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheng-huichao/hapiform-js/issues"
+  },
+  "homepage": "https://github.com/cheng-huichao/hapiform-js#readme"
+}
