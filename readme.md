@@ -1,5 +1,10 @@
 ## Vanilla javascript library of Hapi Form
 
+
+```npm
+npm i hapiform.js or yarn add hapiform.js
+``` 
+
 > Create hapi form from [here](https://hapiform.sg)
 
 
