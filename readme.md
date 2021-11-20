@@ -1,6 +1,9 @@
 ## Vanilla javascript library of Hapi Form
 
-> add reference of `hapiform.css` & `hapiform.js` into your pages.
+> Create hapi form from [here](https://hapiform.sg)
+
+
+> Add reference of `hapiform.css` & `hapiform.js` into your pages.
 
 ```javascript
 <script src="./hapiform.js"></script>
@@ -33,6 +36,8 @@
 
 ```
 
-> Download the source code and open `index.html` you will see 2 forms as bellow:
+> Demo - Download the source code and open `index.html` you will see 2 forms as bellow:
 
 ![Multiple Enquiry Form Demo](demo.png)
+
+
