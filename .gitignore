@@ -1,1 +1,3 @@
 *.codekit*
+/.idea
+.DS_Store
