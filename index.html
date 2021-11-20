@@ -4,50 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hapi Form - Contact Form</title>
+  <link rel="stylesheet" href="demo.css">
   <link rel="stylesheet" href="hapiform.css">
-
-  <style>
-    body{
-      margin: 0;
-      padding: 0;
-    }
-  </style>
 </head>
 <body>
 <div>
-  <form id="hapi-form" class="hapi-form">
-    <h2 class="form-title">Send us an enquiry</h2>
+  <div class="demo">
 
-    <div class="floating-input">
-      <input id="first_name" name="first_name" type="text" placeholder=" "/>
-      <label for="first_name">First Name</label>
-    </div>
+    <form id="hapi-form-1" class="hapi-form">
+      <h2 class="form-title">Send us an enquiry 1</h2>
 
-    <div class="floating-input">
-      <input id="last_name" name="last_name" type="text" placeholder=" "/>
-      <label for="last_name">Last Name</label>
-    </div>
+      <div class="floating-input">
+        <input id="first_name" name="first_name" type="text" placeholder=" "/>
+        <label for="first_name">First Name</label>
+      </div>
 
-    <div class="floating-input">
-      <input id="contact" name="contact" type="tel" placeholder=" "/>
-      <label for="contact">Contact</label>
-    </div>
+      <div class="floating-input">
+        <input id="last_name" name="last_name" type="text" placeholder=" "/>
+        <label for="last_name">Last Name</label>
+      </div>
 
-    <div class="floating-input">
-      <input id="email" name="email" type="email" placeholder=" "/>
-      <label for="email">Email</label>
-    </div>
+      <div class="floating-input">
+        <input id="contact" name="contact" type="tel" placeholder=" "/>
+        <label for="contact">Contact</label>
+      </div>
 
-    <div class="floating-input">
-      <textarea rows="4" id="message" name="message" placeholder=" "></textarea>
-      <label for="message">Message</label>
-    </div>
+      <div class="floating-input">
+        <input id="email" name="email" type="email" placeholder=" "/>
+        <label for="email">Email</label>
+      </div>
 
-    <div class="">
-      <button type="submit">Submit</button>
-    </div>
-  </form>
+      <div class="floating-input">
+        <textarea rows="4" id="message" name="message" placeholder=" "></textarea>
+        <label for="message">Message</label>
+      </div>
 
+      <div class="">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <form id="hapi-form-2" class="hapi-form">
+      <h2 class="form-title">Send us an enquiry 2</h2>
+
+      <div class="floating-input">
+        <input id="first_name2" name="first_name" type="text" placeholder=" "/>
+        <label for="first_name2">First Name</label>
+      </div>
+
+      <div class="floating-input">
+        <input id="last_name2" name="last_name" type="text" placeholder=" "/>
+        <label for="last_name2">Last Name</label>
+      </div>
+
+      <div class="floating-input">
+        <input id="contact2" name="contact" type="tel" placeholder=" "/>
+        <label for="contact2">Contact</label>
+      </div>
+
+      <div class="floating-input">
+        <input id="email2" name="email" type="email" placeholder=" "/>
+        <label for="email2">Email</label>
+      </div>
+
+      <div class="floating-input">
+        <textarea rows="4" id="message2" name="message" placeholder=" "></textarea>
+        <label for="message2">Message</label>
+      </div>
+
+      <div class="">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+  </div>
 </div>
 
 <!--Import the hapi form js library here - Begin -->
@@ -61,7 +91,12 @@
    * @param redirectUrl? - redirect to page, default: '/thank-you.html'
    * @param i18nLocale? - i18n locale code
    */
-  new HapiForm({hapiFormID: '40552337-cfc0-4efe-8e09-e4bc28e9c874', redirectUrl:'/thank-you.html'});
+  /* form 1 */
+  new HapiForm(
+    {formSelector: '#hapi-form-1', hapiFormID: '40552337-cfc0-4efe-8e09-e4bc28e9c874', redirectUrl: '/thank-you.html'});
+  /* form 2 */
+  new HapiForm(
+    {formSelector: '#hapi-form-2', hapiFormID: '40552337-cfc0-4efe-8e09-e4bc28e9c874', redirectUrl: '/thank-you.html'});
 </script>
 
 <!--Import the hapi form js library here - End -->

@@ -62,8 +62,10 @@ class Core implements IHapiFormCore {
    * @param params - IHapiParam
    */
   constructor(params: IHapiParam) {
-    this.thankPageUrl = params.redirectUrl || '/thank-you.html';
-    this._formElement = document.querySelector(params.formSelector || '#hapi-form');
+    this.thankPageUrl = params.redirectUrl ?? '/thank-you.html';
+    this._formElement = <HTMLFormElement>document.querySelector(params.formSelector ?? '#hapi-form');
+    console.log(params.formSelector ?? '#hapi-form')
+    console.log(this._formElement)
     this.i18nLocale = params.i18nLocale;
 
     // endpoint of api calling

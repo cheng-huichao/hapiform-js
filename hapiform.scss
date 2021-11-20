@@ -2,14 +2,14 @@
 .hapi-form {
 
   width: 100%;
-  max-width: 450px;
   display: block;
-  background: cadetblue;
   padding: 30px;
 
   .form-title{
     color:white;
+    margin-top: 0;
     margin-bottom: 1.5rem;
+    line-height: 1;
   }
 
   /**
@@ -94,3 +94,4 @@
     }
   }
 }
+
