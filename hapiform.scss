@@ -1,0 +1,74 @@
+.hapi-form {
+
+  width: 25%;
+  display: block;
+  background: cadetblue;
+
+  /**
+  * floating input style
+  */
+  .floating-input {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.25rem;
+
+    input, textarea {
+      /*background: transparent;*/
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: white;
+      appearance: none;
+      border: 1px solid #808080;
+      padding: 0.6rem 0.68rem;
+      border-radius: 3px;
+
+      &:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+    }
+
+    label {
+      position: absolute;
+      top: 1px; /* input got border width*/
+      left: 1px; /* input got border width*/
+      z-index: 0;
+      padding: 0.5rem 0.68rem;
+      transition-duration: 300ms;
+      background-color: white;
+    }
+
+    input:focus-within ~ label,
+    input:not(:placeholder-shown) ~ label,
+    textarea:focus-within ~ label,
+    textarea:not(:placeholder-shown) ~ label,
+    {
+      z-index: 0;
+      padding: 0 1px;
+      transform: scale(0.75) translateY(-0.82rem);
+      transform-origin: 0;
+      margin-left: 0.75rem;
+    }
+
+    .hapi-form-input-error{
+      color:red;
+      font-size: 10px;
+      padding: 0.2rem;
+    }
+  }
+
+  /**
+  *submit button
+  */
+  input[type=submit], button[type=submit] {
+    width: 100%;
+    padding: .5rem .75rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    outline: none;
+    border-radius: 3px;
+  }
+}
