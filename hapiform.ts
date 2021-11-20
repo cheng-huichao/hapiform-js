@@ -64,8 +64,7 @@ class Core implements IHapiFormCore {
   constructor(params: IHapiParam) {
     this.thankPageUrl = params.redirectUrl ?? '/thank-you.html';
     this._formElement = <HTMLFormElement>document.querySelector(params.formSelector ?? '#hapi-form');
-    console.log(params.formSelector ?? '#hapi-form')
-    console.log(this._formElement)
+
     this.i18nLocale = params.i18nLocale;
 
     // endpoint of api calling
@@ -178,7 +177,7 @@ class Core implements IHapiFormCore {
         this.enableSubmitButtons();
 
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
         // enable submit button
         this.enableSubmitButtons();
       })
@@ -251,10 +250,10 @@ class HapiForm {
    */
   displayEndpoints() {
     // thank you page url
-    console.log('🚀 ', this.hapi.thankPageUrl);
+    console.info('🚀 hapi form ', this.hapi.thankPageUrl);
 
     // backend endpoint
-    console.log('🚀 ', this.hapi.backendEndpoint);
+    console.info('🚀 hapi form ', this.hapi.backendEndpoint);
   }
 
   /**

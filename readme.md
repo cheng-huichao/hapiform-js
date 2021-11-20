@@ -33,3 +33,6 @@
 
 ```
 
+> Download the source code and open `index.html` you will see 2 forms as bellow:
+
+![Multiple Enquiry Form Demo](demo.png)
