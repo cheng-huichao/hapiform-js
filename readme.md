@@ -21,7 +21,7 @@ npm i hapiform.js or yarn add hapiform.js
   */
   new HapiForm(
     {
-      hapiFormID: '40552337-abcd-abcd-abcd-e4bc28e9c874',
+      hapiFormID: '40552337-abcd-abcd-abcd-e4bc28e9c874', // todo: replace your real form Id
       redirectUrl:'/thank-you.html'
     }
   );

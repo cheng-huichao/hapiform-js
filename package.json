@@ -1,6 +1,6 @@
 {
   "name": "hapiform.js",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Vanilla javascript library of Hapi Form",
   "main": "hapiform.js",
   "scripts": {
