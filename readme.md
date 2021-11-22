@@ -14,8 +14,16 @@ npm i hapiform.js or yarn add hapiform.js
 
 <link rel="stylesheet" href="https://unpkg.com/hapiform.js@latest/hapiform.css">
 
-<script src="https://unpkg.com/hapiform.js@latest/hapiform.js" defer></script>
+<script src="https://unpkg.com/hapiform.js@latest/hapiform.js"></script>
 ```
+
+> Parameters of HapiForm - Array list. 
+ 
+  * hapiFormID - required - form id, like: '40552337-abcd-abcd-abcd-e4bc28e9c874'
+  * formSelector? - optional - selector of Form Element. default: '#hapi-form'
+  * redirectUrl? - optional - redirect to page, default: '/thank-you.html'
+  * i18nLocale? - optional - i18n locale code
+   
 
 ```javascript
 
@@ -23,15 +31,7 @@ npm i hapiform.js or yarn add hapiform.js
  css & hapiform.js referenced
 -->
 
-
 <script>
-  /**
-  * Array of parameters/config of HapiForm
-  * @param hapiFormID - required - form id, like: '40552337-abcd-abcd-abcd-e4bc28e9c874'
-  * @param formSelector? - optional - selector of Form Element. default: '#hapi-form'
-  * @param redirectUrl? - optional - redirect to page, default: '/thank-you.html'
-  * @param i18nLocale? - optional - i18n locale code
-  */
   new HapiForm(
     [  
       {
