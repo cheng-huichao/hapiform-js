@@ -44,6 +44,7 @@ interface IHapiParam {
 class Core implements IHapiFormCore {
 
   readonly input_error_class_name = 'hapi-form-input-error'
+  readonly default_form_selector = '#hapi-form';
 
   apiEndpoint: string;
 
@@ -63,7 +64,7 @@ class Core implements IHapiFormCore {
    */
   constructor(params: IHapiParam) {
     this.thankPageUrl = params.redirectUrl ?? '/thank-you.html';
-    this._formElement = <HTMLFormElement>document.querySelector(params.formSelector ?? '#hapi-form');
+    this._formElement = <HTMLFormElement>document.querySelector(params.formSelector ?? this.default_form_selector);
 
     this.i18nLocale = params.i18nLocale;
 
@@ -221,47 +222,81 @@ class Core implements IHapiFormCore {
  * HapiForm Main Class
  */
 class HapiForm {
-  hapi: Core;
+
+  isValidParams: boolean = false;
 
   /**
    * Constructor of HapiForm
-   * @param params - IHapiParam
-   * hapiFormId - form id, like: '40552337-cfc0-4efe-8e09-e4bc28e9c874'
-   *  hapiFormID - hapi form id, like '40552337-cfc0-4efe-8e09-e4bc28e9c874'
+   * @param params - IHapiParam[]: array
+   *  hapiFormId - form id, like: '40552337-xxxx-4efe-8e09-e4bc28e9c874'
+   *  hapiFormID - hapi form id, like '40552337-yyyy-4efe-8e09-e4bc28e9c874'
    *  formSelector - selector of Form Element. default: '#hapi-form'
    *  redirectUrl - redirect to page, default: '/thank-you/'
    *  i18nLocale - i18n locale code
    */
-  constructor(params: IHapiParam) {
-    this.hapi = new Core(params);
+  constructor(params: IHapiParam[]) {
 
-    window.addEventListener('load', () => {
-      // display endpoints
-      this.displayEndpoints();
+    this.handleParamCheck(params);
 
-      // handle submissions
-      this.onSubmission();
-    })
+    if (this.isValidParams) {
+      // create instances of Core class of HapiForm
+      for (let index in params) {
+        let hapi: Core = new Core(params[index]);
 
+        // check form element exists or not
+        let formSelector: string = params[index].formSelector ?? hapi.default_form_selector;
+        let formElement: HTMLFormElement = document.querySelector(formSelector);
+
+        if (formElement === null) {
+          console.error("can't find the form by selector", formSelector);
+          break;
+        }
+        // add core functions on window.load event
+        window.addEventListener('load', () => {
+          // display endpoints
+          // thank you page url
+          console.info('🚀 hapi form ', hapi.thankPageUrl);
+
+          // backend endpoint
+          console.info('🚀 hapi form ', hapi.backendEndpoint);
+
+          // handle submissions
+          hapi.handleSubmission();
+        })
+
+      }
+    }
   }
 
-  /**
-   * Display endpoints
-   */
-  displayEndpoints() {
-    // thank you page url
-    console.info('🚀 hapi form ', this.hapi.thankPageUrl);
+  handleParamCheck(params: IHapiParam[]) {
 
-    // backend endpoint
-    console.info('🚀 hapi form ', this.hapi.backendEndpoint);
-  }
+    // not an array list
+    if (!Array.isArray(params)) {
+      console.error('invalid parameters of HapiForm constructor');
+      return;
+    }
 
-  /**
-   * Handle Submission
-   */
-  onSubmission() {
-    this.hapi.handleSubmission();
+    // empty array []
+    if (params.length === 0) {
+      console.error('empty parameters of HapiForm constructor');
+      return;
+    }
+
+    // missing hapiFormID params
+    let errorsNoHapiFormID: Number[] = [];
+    for (let index in params) {
+      if (params[index].hapiFormID != null && params[index].hapiFormID.trim().length > 0) {
+        // valid
+      } else {
+        console.error('No HapiFormID provided')
+        errorsNoHapiFormID.push(1);
+      }
+    }
+    if (errorsNoHapiFormID.length > 0) {
+      return;
+    }
+
+    this.isValidParams = true;
   }
 
 }
-
