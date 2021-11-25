@@ -24,59 +24,36 @@ npm i hapiform.js or yarn add hapiform.js
   * redirectUrl? - optional - redirect to page, default: '/thank-you.html'
   * i18nLocale? - optional - i18n locale code
    
+_parameters with `?` means it is optional parameter_
 
 ```javascript
 
-<!-- ... 
- css & hapiform.js referenced
--->
+// set up one ot more forms
+let formConfig= [  
+  {
+    hapiFormID: '40552337-abcd-abcd-abcd-e4bc28e9c874', // todo: replace your real form Id
+    redirectUrl:'/success/'
+  },
+  {
+    formSelector: '#hapi-form-2',
+    hapiFormID: '40552337-bbbb-bbbb-bbbb-e4bc28e9c874', // todo: replace your real form Id
+    redirectUrl: '/thank-you.html',
+  },
+]
 
-<script>
-  new HapiForm(
-    [  
-      {
-        hapiFormID: '40552337-abcd-abcd-abcd-e4bc28e9c874', // todo: replace your real form Id
-        redirectUrl:'/thank-you.html'
-      }
-    ]
-  );
-</script>
+// use class to initial hapiform
+new HapiForm(formConfig)
 
-```
+/* or */
 
-> Multiple forms in one page:
+// use function to initial hapiform
+initHapiForm(formConfig);
 
-```javascript
 
-/*
-* using `formSelector` for multiple forms in one page.
-* */
-
- <!-- ... 
-  css & hapiform.js referenced
- -->
-
-<script>
-  /* form 1 */
-  new HapiForm(
-    [
-      /* params of form 1 */
-      {
-        formSelector: '#hapi-form-1',
-        hapiFormID: '40552337-aaaa-aaaa-aaaa-e4bc28e9c874', // todo: replace your real form Id
-        redirectUrl: '/thank-you.html',
-      },
-      /* params of form 2 */
-      {
-        formSelector: '#hapi-form-2',
-        hapiFormID: '40552337-bbbb-bbbb-bbbb-e4bc28e9c874', // todo: replace your real form Id
-        redirectUrl: '/thank-you.html',
-      },
-    ],
-  ); 
-</script>
 
 ```
+ 
+ 
 
 > Demo - Download the source code and open `index.html` you will see 2 forms as bellow:
 

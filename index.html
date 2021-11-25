@@ -81,9 +81,9 @@
 </div>
 
 
-<!--<script src="./hapiform.js"></script>-->
+<script src="./hapiform.js"></script>
 <!--or use unpkg cdn-->
-<script src="https://unpkg.com/hapiform.js@latest/hapiform.js"></script>
+<!--<script src="https://unpkg.com/hapiform.js@latest/hapiform.js"></script>-->
 <script>
   /**
    * array of Parameters/config of HapiForm
@@ -92,23 +92,28 @@
    * @param redirectUrl? - optional - redirect to page, default: '/thank-you.html'
    * @param i18nLocale? - optional - i18n locale code
    */
+  let formConfig = [
+    /* params of form 1 */
+    {
+      formSelector: '#hapi-form-1',
+      hapiFormID: '40552337-aaaa-aaaa-aaaa-e4bc28e9c874', // todo: replace your real form Id
+      redirectUrl: '/thank-you.html',
+    },
+    /* params of form 2 */
+    {
+      formSelector: '#hapi-form-2',
+      hapiFormID: '40552337-bbbb-bbbb-bbbb-e4bc28e9c874', // todo: replace your real form Id
+      redirectUrl: '/thank-you.html',
+    },
+  ];
 
-  new HapiForm(
-    [
-      /* params of form 1 */
-      {
-        formSelector: '#hapi-form-1',
-        hapiFormID: '40552337-aaaa-aaaa-aaaa-e4bc28e9c874', // todo: replace your real form Id
-        redirectUrl: '/thank-you.html',
-      },
-      /* params of form 2 */
-      {
-        formSelector: '#hapi-form-2',
-        hapiFormID: '40552337-bbbb-bbbb-bbbb-e4bc28e9c874', // todo: replace your real form Id
-        redirectUrl: '/thank-you.html',
-      },
-    ],
-  );
+  // use class to initial hapiform
+  // new HapiForm(formConfig)
+
+  /* or */
+
+  // function to initial hapiform
+  initHapiForm(formConfig);
 
 </script>
 

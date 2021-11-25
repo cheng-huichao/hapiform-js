@@ -31,7 +31,7 @@ interface IHapiFormCore {
  * @param redirectUrl - redirect to page, default: '/thank-you/'
  * @param i18nLocale - i18n locale code
  */
-interface IHapiParam {
+type HapiParam = {
   hapiFormID: string;
   formSelector?: string;
   redirectUrl?: string;
@@ -54,7 +54,6 @@ class Core implements IHapiFormCore {
 
   thankPageUrl: string;
 
-
   _formElement: HTMLFormElement;
 
 
@@ -62,7 +61,7 @@ class Core implements IHapiFormCore {
    * HapiParam Core
    * @param params - IHapiParam
    */
-  constructor(params: IHapiParam) {
+  constructor(params: HapiParam) {
     this.thankPageUrl = params.redirectUrl ?? '/thank-you.html';
     this._formElement = <HTMLFormElement>document.querySelector(params.formSelector ?? this.default_form_selector);
 
@@ -223,7 +222,7 @@ class Core implements IHapiFormCore {
  */
 class HapiForm {
 
-  isValidParams: boolean = false;
+  private isValidParams: boolean = false;
 
   /**
    * Constructor of HapiForm
@@ -234,7 +233,7 @@ class HapiForm {
    *  redirectUrl - redirect to page, default: '/thank-you/'
    *  i18nLocale - i18n locale code
    */
-  constructor(params: IHapiParam[]) {
+  constructor(params: HapiParam[]) {
 
     this.handleParamCheck(params);
 
@@ -268,7 +267,7 @@ class HapiForm {
     }
   }
 
-  handleParamCheck(params: IHapiParam[]) {
+  handleParamCheck(params: HapiParam[]) {
 
     // not an array list
     if (!Array.isArray(params)) {
@@ -300,3 +299,13 @@ class HapiForm {
   }
 
 }
+
+/**
+ * use function to initial Instance of HapiForm
+ * @param data
+ */
+let initHapiForm = (data: HapiParam[]) => {
+  // new instance of Hapi Form
+  new HapiForm(data);
+}
+
