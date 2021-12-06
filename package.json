@@ -1,7 +1,7 @@
 {
   "name": "hapiform.js",
-  "version": "1.0.8",
-  "description": "Vanilla javascript library of Hapi Form",
+  "version": "1.0.9",
+  "description": "Javascript library of Hapi Form.",
   "main": "esm/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
